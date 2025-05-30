@@ -1,8 +1,8 @@
 using Azure.Messaging.ServiceBus;
 using Microsoft.EntityFrameworkCore;
-using Presentation;
 using Presentation.Data;
 using Presentation.ServiceBus;
+using Presentation.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +16,8 @@ builder.Services.AddSingleton<ServiceBusClient>(provider =>
     return new ServiceBusClient(connectionString);
 });
 builder.Services.AddHostedService<AccountCreatedMessageHandler>();
-builder.Services.AddDbContext<ProfileContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ProfileDatabaseConnection")));
-builder.Services.AddScoped<ProfileService>(); 
+builder.Services.AddDbContext<ProfileContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("VentixeDatabaseConnection")));
+builder.Services.AddScoped<IProfileService, ProfileService>(); 
 
 var app = builder.Build();
 

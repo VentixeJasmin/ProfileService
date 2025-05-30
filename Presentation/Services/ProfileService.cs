@@ -2,9 +2,9 @@
 using Presentation.Data;
 using Presentation.Models;
 
-namespace Presentation; 
+namespace Presentation.Services;
 
-public class ProfileService(ProfileContext context)
+public class ProfileService(ProfileContext context) : IProfileService
 {
     private readonly ProfileContext _context = context;
 

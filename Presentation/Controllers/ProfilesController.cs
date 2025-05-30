@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
+using Presentation.Services;
 
 namespace Presentation.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProfilesController(ProfileService profileService) : ControllerBase
+public class ProfilesController(IProfileService profileService) : ControllerBase
 {
-    private readonly ProfileService _profileService = profileService;
+    private readonly IProfileService _profileService = profileService;
 
     [HttpGet("form-data")]
     public IActionResult GetProfileFormData()
