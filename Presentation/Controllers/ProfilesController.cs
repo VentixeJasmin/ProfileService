@@ -56,7 +56,7 @@ public class ProfilesController(IProfileService profileService) : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{userName}")]
     public async Task<IActionResult> GetProfileByUserName(string userName)
     {
         var profile = await _profileService.GetProfileByUserName(userName);
