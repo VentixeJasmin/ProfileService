@@ -6,7 +6,6 @@ using Presentation.Services;
 
 namespace Presentation.Controllers;
 
-[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ProfilesController(IProfileService profileService) : ControllerBase
@@ -28,7 +27,7 @@ public class ProfilesController(IProfileService profileService) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProfile(ProfileDto dto)
+    public async Task<IActionResult> CreateProfile([FromBody] ProfileDto dto)
     {
         try
         {
@@ -41,6 +40,7 @@ public class ProfilesController(IProfileService profileService) : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetProfiles()
     {
